@@ -1,36 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[/life/log/messages]]></title>
   <link href="http://i97506051502.github.com/atom.xml" rel="self"/>
   <link href="http://i97506051502.github.com/"/>
-  <updated>2012-11-22T16:36:36+09:00</updated>
+  <updated>2012-11-22T16:53:19+09:00</updated>
   <id>http://i97506051502.github.com/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Go Sato]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
-    <title type="html"><![CDATA[post]]></title>
-    <link href="http://i97506051502.github.com/blog/2012/11/22/post/"/>
-    <updated>2012-11-22T14:53:00+09:00</updated>
-    <id>http://i97506051502.github.com/blog/2012/11/22/post</id>
-    <content type="html"><![CDATA[<p>post.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[test]]></title>
-    <link href="http://i97506051502.github.com/blog/2012/11/22/test/"/>
-    <updated>2012-11-22T14:22:00+09:00</updated>
-    <id>http://i97506051502.github.com/blog/2012/11/22/test</id>
-    <content type="html"><![CDATA[<h1>test</h1>
+    <title type="html"><![CDATA[Hello World]]></title>
+    <link href="http://i97506051502.github.com/blog/2012/11/22/hello-world/"/>
+    <updated>2012-11-22T16:45:00+09:00</updated>
+    <id>http://i97506051502.github.com/blog/2012/11/22/hello-world</id>
+    <content type="html"><![CDATA[<p>2012 年 11 月 22 日, 本日よりこの blog を開始したいと思います.</p>
 
-<p>this is a test post.
-これはテスト投稿です.</p>
+<p>内容は技術系がメインになると思います.</p>
+
+<hr />
+
+<p>簡単だと思っていた, Octopress + GitHub Pages での blog 開設ですが, ローカルの Mac OS X 10.6.8 の Ruby 環境に起因すると思われる諸々のエラーに苦しめられました.
+(rake generate でエラーが出ていました)</p>
+
+<p>どこでハマったか, どうやって解決したか, などは追々書いていきたいと思います.</p>
 ]]></content>
   </entry>
   
