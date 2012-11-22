@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://i97506051502.github.com/atom.xml" rel="self"/>
+  <link href="http://i97506051502.github.com/"/>
+  <updated>2012-11-22T16:36:36+09:00</updated>
+  <id>http://i97506051502.github.com/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[post]]></title>
+    <link href="http://i97506051502.github.com/blog/2012/11/22/post/"/>
+    <updated>2012-11-22T14:53:00+09:00</updated>
+    <id>http://i97506051502.github.com/blog/2012/11/22/post</id>
+    <content type="html"><![CDATA[<p>post.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[test]]></title>
+    <link href="http://i97506051502.github.com/blog/2012/11/22/test/"/>
+    <updated>2012-11-22T14:22:00+09:00</updated>
+    <id>http://i97506051502.github.com/blog/2012/11/22/test</id>
+    <content type="html"><![CDATA[<h1>test</h1>
+
+<p>this is a test post.
+これはテスト投稿です.</p>
+]]></content>
+  </entry>
+  
+</feed>
