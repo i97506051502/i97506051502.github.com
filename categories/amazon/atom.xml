@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[/life/log/messages]]></title>
-  <link href="http://i97506051502.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Amazon | /life/log/messages]]></title>
+  <link href="http://i97506051502.github.com/categories/amazon/atom.xml" rel="self"/>
   <link href="http://i97506051502.github.com/"/>
   <updated>2012-11-26T17:27:22+09:00</updated>
   <id>http://i97506051502.github.com/</id>
@@ -160,22 +160,6 @@ export HISTSIZE=16776960
 </code></pre>
 
 <p>ユーザー個別設定はここまで。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello World]]></title>
-    <link href="http://i97506051502.github.com/20121122/HelloWorld/"/>
-    <updated>2012-11-22T16:45:00+09:00</updated>
-    <id>http://i97506051502.github.com/20121122/HelloWorld</id>
-    <content type="html"><![CDATA[<p>2012 年 11 月 22 日, 本日よりこの blog を開始したいと思います.</p>
-
-<p>内容は技術系がメインになると思います.</p>
-
-<p>簡単だと思っていた, Octopress + GitHub Pages での blog 開設ですが, ローカルの Mac OS X 10.6.8 の Ruby 環境に起因すると思われる諸々のエラーに苦しめられました.
-(rake generate でエラーが出ていました)</p>
-
-<p>どこでハマったか, どうやって解決したか, などは追々書いていきたいと思います.</p>
 ]]></content>
   </entry>
   
