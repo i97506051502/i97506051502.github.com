@@ -9,9 +9,10 @@
   <meta name="author" content="Go Sato">
 
   
-  <meta name="description" content="Git 共有リポジトリ &amp; Redmine 連携 Client A のローカルリポジトリ foo を、
+  <meta name="description" content="Client A のローカルリポジトリ foo を、
 example.com の共有リポジトリ (foo.git) にプッシュし
-Client B からそれをクローンする手順を解説してみたいと思います。 環境 Server (example &hellip;">
+Client B からそれをクローンする手順を解説してみたいと思います。 環境 Server (example.com) Redmine
+git 共有リポジトリ ( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,9 +93,7 @@ Client B からそれをクローンする手順を解説してみたいと思�
   </header>
 
 
-<div class="entry-content"><h1>Git 共有リポジトリ &amp; Redmine 連携</h1>
-
-<p>Client A のローカルリポジトリ foo を、
+<div class="entry-content"><p>Client A のローカルリポジトリ foo を、
 example.com の共有リポジトリ (foo.git) にプッシュし
 Client B からそれをクローンする手順を解説してみたいと思います。</p>
 
@@ -140,7 +139,7 @@ Client B からそれをクローンする手順を解説してみたいと思�
 
 <h2>Server で共有リポジトリ作成</h2>
 
-<h3>前準備 (ユーザー作成)</h3>
+<h4>前準備 (ユーザー作成)</h4>
 
 <p>git 用ユーザー &#8216;git&#8217; を作成します。</p>
 
@@ -154,7 +153,7 @@ sudo useradd -g git -u 8888 git
 <pre><code>su git
 </code></pre>
 
-<h3>共有リポジトリの作成</h3>
+<h4>共有リポジトリの作成</h4>
 
 <p>Redmine 実行ユーザー (apache など) が読み書きできるディレクトリを作成し、共有リポジトリを作成します。</p>
 
@@ -176,7 +175,7 @@ git init --bare --shared ./foo.git
 </ol>
 
 
-<h2>Client A</h2>
+<h2>Client A -> Server に、プッシュ！</h2>
 
 <p>ローカルリポジトリ foo を作成し、example.com の foo.git 共有リポジトリにプッシュします。</p>
 
@@ -193,7 +192,7 @@ git log
 (first commit というコメントが見れます)
 </code></pre>
 
-<h2>Client B</h2>
+<h2>Client B &lt;- Server と、クローン！</h2>
 
 <p>example.com の foo.git 共有リポジトリをローカルにクローンします。</p>
 
