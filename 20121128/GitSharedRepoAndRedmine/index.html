@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>/life/log/messages</title>
+  <title>Git 共有リポジトリ & Redmine 連携 - /life/log/messages</title>
   <meta name="author" content="Go Sato">
 
   
@@ -20,7 +20,7 @@ Client B からそれをクローンする手順を解説してみたいと思�
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://i97506051502.github.com/">
+  <link rel="canonical" href="http://i97506051502.github.com/20121128/GitSharedRepoAndRedmine/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -64,15 +64,12 @@ Client B からそれをクローンする手順を解説してみたいと思�
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/20121128/GitSharedRepoAndRedmine/">Git 共有リポジトリ & Redmine 連携</a></h1>
+      <h1 class="entry-title">Git 共有リポジトリ & Redmine 連携</h1>
     
     
       <p class="meta">
@@ -95,7 +92,7 @@ Client B からそれをクローンする手順を解説してみたいと思�
   </header>
 
 
-  <div class="entry-content"><h1>Git 共有リポジトリ &amp; Redmine 連携</h1>
+<div class="entry-content"><h1>Git 共有リポジトリ &amp; Redmine 連携</h1>
 
 <p>Client A のローカルリポジトリ foo を、
 example.com の共有リポジトリ (foo.git) にプッシュし
@@ -209,199 +206,16 @@ git log
 
 <p>これで、お互いの更新を、共有リポジトリを介して共有し合う準備ができました。</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/20121126/FoundationOfAmazonLinux/">Amazon Linux ベース構築手順</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">Go Sato</span></span>
 
-<time datetime="2012-11-26T17:24:00+09:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>ベース？</h2>
-
-<p>これから何度も使うであろう Amazon Linux の EC2 インスタンス。
-大体のサーバーに共通で必要と思われる部分を構築し、様々なサーバーのベースとしようと思います。</p>
-
-<p>micro インスタンスで構築すると諸々のインストール（特に rdoc 関連）に時間がかかるので small インスタンス にて構築を行い、完了後に AMI 化を行います。</p>
-
-<p>まずは EC2 Management Console の「Launch Instances」をクリックし、Classic Wizard でベーシックな EC2 インスタンスを起動します。</p>
-
-<p>（スペックを書く）</p>
-
-<h2>構築手順</h2>
-
-<h3>ユーザーとグループの作成</h3>
-
-<p>デフォルトの ec2-user で使うのも何だか味気ないので、普段使っているユーザーとグループを作成し、それを使おうと思います。
-まずはグループを作ってからユーザーを作ります。</p>
-
-<p>ユーザーは sudo ができるように wheel グループに入れておきましょう。</p>
-
-<pre><code>$ sudo groupadd -g グループID グループ名
-$ sudo useradd -g ユーザーID -G 10 ユーザー名
-</code></pre>
-
-<h4>◆ sudo の許可</h4>
-
-<p>作ったユーザーが sudo できるようにする。
-パスワードはいちいち入れたくないので以下のようにした。</p>
-
-<pre><code>$ sudo vi /etc/sudores
-
-## Same thing without a password
-# %wheel    ALL=(ALL)     NOPASSWD: ALL
-↓コメントイン
-%wheel    ALL=(ALL)     NOPASSWD: ALL
-</code></pre>
-
-<h4>◆ git と zsh のインストール</h4>
-
-<p>yum でサックリ</p>
-
-<pre><code>$ sudo yum install git
-$ sudo yum install zsh
-</code></pre>
-
-<h4>◆ 各ユーザーの環境設定</h4>
-
-<p>以下の作業は あなたが作ったユーザー, ec2-user, root それぞれで実行する。</p>
-
-<p>（ec2-user はまだしも、root は vim の設定など合わせておかないと sudo 時に違う設定で vim を開いたりしてしまい面倒だから）</p>
-
-<h5>- git config の設定</h5>
-
-<pre><code>$ git config --global user.name 'Go Sato'
-$ git config --global user.email i97506051502@gmail.com
-$ git config --global core.pager less
-$ git config --global color.ui auto
-$ git config --global core.editor vim
-</code></pre>
-
-<h5>- github 用ディレクトリの作成</h5>
-
-<pre><code>$ mkdir ~/github
-</code></pre>
-
-<h5>- bash から zsh に変更</h5>
-
-<pre><code>$ sudo chsh -s /bin/zsh ユーザー名
-</code></pre>
-
-<h5>- 公開鍵のコピー</h5>
-
-<pre><code>$ sudo cp -r /home/ec2-user/.ssh ~/
-$ sudo chown ユーザー名:グループ名 .ssh
-$ sudo chown ユーザー名:グループ名 .ssh/authorized_keys
-</code></pre>
-
-<h5>- GitHub 用の SSH 公開鍵を設定</h5>
-
-<pre><code>$ ssh-keygen -t dsa
-
-/home/ユーザー名/.ssh/id_dsa_github
-</code></pre>
-
-<p>パスワードは入れません。入れたい人はどうぞ。面倒になりますが。</p>
-
-<pre><code>$ chmod 400 ~/.ssh/id_dsa_github
-$ chmod 400 ~/.ssh/id_dsa_github.pub
-</code></pre>
-
-<p>id_dsa_github.pub の内容を GitHub に登録します。</p>
-
-<h5>- GitHub 用の SSH config を作成</h5>
-
-<pre><code>$ vi ~/.ssh/config
-
-Host github.com
-User git
-Hostname github.com
-IdentityFile ~/.ssh/id_dsa_github
-
-$ chmod 600 ~/.ssh/config
-</code></pre>
-
-<h5>- oh-my-zsh のインストール</h5>
-
-<p>oh-my-zsh を GitHub にてフォークしてクローンしてインストールします。</p>
-
-<pre><code>$ cd ~/github
-$ git clone git@github.com:GitHubのユーザー名/oh-my-zsh.git oh-my-zsh
-</code></pre>
-
-<h5>- oh-my-zsh の .zshrc を適用</h5>
-
-<pre><code>$ cp -a ~/github/oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-$ vi ~/.zshrc
-
-#ZSH=$HOME/.oh-my-zsh
-↓変更
-ZSH=$HOME/github/oh-my-zsh
-
-$ source ~/.zshrc
-</code></pre>
-
-<h5>- .zshrc カスタム設定の適用</h5>
-
-<pre><code>$ vi ~/github/oh-my-zsh/custom/i97506051502.zsh
-</code></pre>
-
-<p>とりあえずこんなところを。</p>
-
-<pre><code>set -o vi
-alias ll='ls -laG'
-alias vi='vim'
-export LANG=ja_JP.UTF-8
-HISTTIMEFORMAT='%Y%m%d %T '; export HISTTIMEFORMAT
-export HISTCONTROL=ignoredups
-export HISTCONTROL=ignorespace
-export HISTSIZE=16776960
-</code></pre>
-
-<p>ユーザー個別設定はここまで。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/20121122/HelloWorld/">Hello World</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -413,34 +227,38 @@ export HISTSIZE=16776960
   
 
 
-<time datetime="2012-11-22T16:45:00+09:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2012</time>
-        
-      </p>
+<time datetime="2012-11-28T18:34:00+09:00" pubdate data-updated="true">Nov 28<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/git-redmine/'>Git,Redmine</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>2012 年 11 月 22 日, 本日よりこの blog を開始したいと思います.</p>
-
-<p>内容は技術系がメインになると思います.</p>
-
-<p>簡単だと思っていた, Octopress + GitHub Pages での blog 開設ですが, ローカルの Mac OS X 10.6.8 の Ruby 環境に起因すると思われる諸々のエラーに苦しめられました.
-(rake generate でエラーが出ていました)</p>
-
-<p>どこでハマったか, どうやって解決したか, などは追々書いていきたいと思います.</p>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://i97506051502.github.com/20121128/GitSharedRepoAndRedmine/" data-via="" data-counturl="http://i97506051502.github.com/20121128/GitSharedRepoAndRedmine/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/20121126/FoundationOfAmazonLinux/" title="Previous Post: Amazon Linux ベース構築手順">&laquo; Amazon Linux ベース構築手順</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -469,6 +287,7 @@ export HISTSIZE=16776960
 
   
 </aside>
+
 
     </div>
   </div>

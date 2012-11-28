@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Git,Redmine | /life/log/messages]]></title>
+  <link href="http://i97506051502.github.com/categories/git-redmine/atom.xml" rel="self"/>
+  <link href="http://i97506051502.github.com/"/>
+  <updated>2012-11-28T18:35:41+09:00</updated>
+  <id>http://i97506051502.github.com/</id>
+  <author>
+    <name><![CDATA[Go Sato]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Git 共有リポジトリ & Redmine 連携]]></title>
+    <link href="http://i97506051502.github.com/20121128/GitSharedRepoAndRedmine/"/>
+    <updated>2012-11-28T18:34:00+09:00</updated>
+    <id>http://i97506051502.github.com/20121128/GitSharedRepoAndRedmine</id>
+    <content type="html"><![CDATA[<h1>Git 共有リポジトリ &amp; Redmine 連携</h1>
+
+<p>Client A のローカルリポジトリ foo を、
+example.com の共有リポジトリ (foo.git) にプッシュし
+Client B からそれをクローンする手順を解説してみたいと思います。</p>
+
+<h2>環境</h2>
+
+<ul>
+<li>Server (example.com)
+
+<ul>
+<li>Redmine</li>
+<li>git
+
+<ul>
+<li>共有リポジトリ (foo.git, bare リポジトリ)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Client A
+
+<ul>
+<li>git
+
+<ul>
+<li>ローカルリポジトリ (foo, 共有リポジトリにプッシュします)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Client B
+
+<ul>
+<li>git
+
+<ul>
+<li>ローカルリポジトリ (foo, 共有リポジトリからクローンします)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Server で共有リポジトリ作成</h2>
+
+<h3>前準備 (ユーザー作成)</h3>
+
+<p>git 用ユーザー 'git' を作成します。</p>
+
+<pre><code>sudo groupadd -g 8888 git
+sudo useradd -g git -u 8888 git
+(ユーザー ID とグループ ID は適当に決めてください)
+</code></pre>
+
+<p>ユーザー git にスイッチします。</p>
+
+<pre><code>su git
+</code></pre>
+
+<h3>共有リポジトリの作成</h3>
+
+<p>Redmine 実行ユーザー (apache など) が読み書きできるディレクトリを作成し、共有リポジトリを作成します。</p>
+
+<pre><code>cd /var/www/html
+git init --bare --shared ./foo.git
+</code></pre>
+
+<h2>Redmine の設定</h2>
+
+<ol>
+<li>プロジェクトの [設定] - [リポジトリ] に移動します。</li>
+<li>以下のとおり設定し、[追加] をクリックします。
+
+<ul>
+<li>バージョン管理システム -> Git</li>
+<li>Path to .git directory -> リポジトリのフルパス (/var/www/html/foo.git) を入力します。</li>
+</ul>
+</li>
+</ol>
+
+
+<h2>Client A</h2>
+
+<p>ローカルリポジトリ foo を作成し、example.com の foo.git 共有リポジトリにプッシュします。</p>
+
+<pre><code>cd ~
+mkdir foo
+cd foo
+git init
+git add .
+git commit -a
+(コミットのコメントを書きます。ここでは 'first commit' とします)
+git remote add origin git@example.com:/var/www/html/foo.git
+git push origin master
+git log
+(first commit というコメントが見れます)
+</code></pre>
+
+<h2>Client B</h2>
+
+<p>example.com の foo.git 共有リポジトリをローカルにクローンします。</p>
+
+<pre><code>cd ~
+git clone git@example.com:/var/www/html/foo.git
+(クローン完了)
+git log
+(first commit というコメントが見れます)
+</code></pre>
+
+<p>これで、お互いの更新を、共有リポジトリを介して共有し合う準備ができました。</p>
+]]></content>
+  </entry>
+  
+</feed>
