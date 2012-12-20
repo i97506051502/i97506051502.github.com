@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Blog | /life/log/messages]]></title>
+  <link href="http://i97506051502.github.com/categories/blog/atom.xml" rel="self"/>
+  <link href="http://i97506051502.github.com/"/>
+  <updated>2012-12-20T18:30:41+09:00</updated>
+  <id>http://i97506051502.github.com/</id>
+  <author>
+    <name><![CDATA[Go Sato]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress でブログ執筆]]></title>
+    <link href="http://i97506051502.github.com/20121220/WriteBlogsByOctopress/"/>
+    <updated>2012-12-20T18:10:00+09:00</updated>
+    <id>http://i97506051502.github.com/20121220/WriteBlogsByOctopress</id>
+    <content type="html"><![CDATA[<p>いい感じのブログを作りたいな、と思って色々ツールをあさる中、Octopress に出会いました。
+Octopress は私の理解では、Markdown で記事のソースを書いて ruby で HTML を generate して git でサーバーにアップロードするツールです。</p>
+
+<p>試してみるといい感じなので以下の理由で導入を決めました。
+- Markdown で記事が書ける(構造化された HTML がサクっと作れるので Markdown 大好きです)。
+- シンタックスハイライトがデフォルトできれい。</p>
+
+<h2>環境</h2>
+
+<p>以下の記事を参考に、環境を構築しました。</p>
+
+<p><a href="http://www.sankitch.me/blog/2012/05/05/build-octopress-on-github-dropbox/" title="Octopress + Github Pages + Dropbox でブログを構築">Octopress + Github Pages + Dropbox でブログを構築</a></p>
+
+<p>環境構築の要点をまとめると以下のとおりです。</p>
+
+<ul>
+<li>octopress (ツール) は、いつも使っている Mac にインストールしました(バックアップも兼ねて Dropbox 配下に)。</li>
+<li>サーバーには GitHub Pages を使用。</li>
+</ul>
+
+
+<h2>ブログ執筆</h2>
+
+<p>公式サイトを参考にするのがよいでしょう。
+以下の記事に、記事のソース作成から HTML 生成までのチュートリアルがあります。
+(併せて、新規ページ作成のチュートリアルもあります)</p>
+
+<p><a href="http://octopress.org/docs/blogging/" title="Blogging Basics">Blogging Basics</a></p>
+]]></content>
+  </entry>
+  
+</feed>

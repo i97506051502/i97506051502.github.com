@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Hello World - /life/log/messages</title>
+  <title>Octopress でブログ執筆 - /life/log/messages</title>
   <meta name="author" content="Go Sato">
 
   
-  <meta name="description" content="2012 年 11 月 22 日, 本日よりこの blog を開始したいと思います. 内容は技術系がメインになると思います. 簡単だと思っていた, Octopress + GitHub Pages での blog 開設ですが, ローカルの Mac OS X 10.6.8 の Ruby &hellip;">
+  <meta name="description" content="いい感じのブログを作りたいな、と思って色々ツールをあさる中、Octopress に出会いました。
+Octopress は私の理解では、Markdown で記事のソースを書いて ruby で HTML を generate して git でサーバーにアップロードするツールです。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://i97506051502.github.com/20121122/HelloWorld/">
+  <link rel="canonical" href="http://i97506051502.github.com/20121220/WriteBlogsByOctopress/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -67,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Hello World</h1>
+      <h1 class="entry-title">Octopress でブログ執筆</h1>
     
     
       <p class="meta">
@@ -83,21 +84,41 @@
   
 
 
-<time datetime="2012-11-22T16:45:00+09:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2012</time>
+<time datetime="2012-12-20T18:10:00+09:00" pubdate data-updated="true">Dec 20<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>2012 年 11 月 22 日, 本日よりこの blog を開始したいと思います.</p>
+<div class="entry-content"><p>いい感じのブログを作りたいな、と思って色々ツールをあさる中、Octopress に出会いました。
+Octopress は私の理解では、Markdown で記事のソースを書いて ruby で HTML を generate して git でサーバーにアップロードするツールです。</p>
 
-<p>内容は技術系がメインになると思います.</p>
+<p>試してみるといい感じなので以下の理由で導入を決めました。
+- Markdown で記事が書ける(構造化された HTML がサクっと作れるので Markdown 大好きです)。
+- シンタックスハイライトがデフォルトできれい。</p>
 
-<p>簡単だと思っていた, Octopress + GitHub Pages での blog 開設ですが, ローカルの Mac OS X 10.6.8 の Ruby 環境に起因すると思われる諸々のエラーに苦しめられました.
-(rake generate でエラーが出ていました)</p>
+<h2>環境</h2>
 
-<p>どこでハマったか, どうやって解決したか, などは追々書いていきたいと思います.</p>
+<p>以下の記事を参考に、環境を構築しました。</p>
+
+<p><a href="http://www.sankitch.me/blog/2012/05/05/build-octopress-on-github-dropbox/" title="Octopress + Github Pages + Dropbox でブログを構築">Octopress + Github Pages + Dropbox でブログを構築</a></p>
+
+<p>環境構築の要点をまとめると以下のとおりです。</p>
+
+<ul>
+<li>octopress (ツール) は、いつも使っている Mac にインストールしました(バックアップも兼ねて Dropbox 配下に)。</li>
+<li>サーバーには GitHub Pages を使用。</li>
+</ul>
+
+
+<h2>ブログ執筆</h2>
+
+<p>公式サイトを参考にするのがよいでしょう。
+以下の記事に、記事のソース作成から HTML 生成までのチュートリアルがあります。
+(併せて、新規ページ作成のチュートリアルもあります)</p>
+
+<p><a href="http://octopress.org/docs/blogging/" title="Blogging Basics">Blogging Basics</a></p>
 </div>
 
 
@@ -120,12 +141,12 @@
   
 
 
-<time datetime="2012-11-22T16:45:00+09:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2012</time>
+<time datetime="2012-12-20T18:10:00+09:00" pubdate data-updated="true">Dec 20<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/categories/misc/'>misc</a>
+    <a class='category' href='/categories/blog/'>Blog</a>, <a class='category' href='/categories/octopress/'>Octopress</a>
   
 </span>
 
@@ -134,7 +155,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://i97506051502.github.com/20121122/HelloWorld/" data-via="" data-counturl="http://i97506051502.github.com/20121122/HelloWorld/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://i97506051502.github.com/20121220/WriteBlogsByOctopress/" data-via="" data-counturl="http://i97506051502.github.com/20121220/WriteBlogsByOctopress/" >Tweet</a>
   
   
   
@@ -143,8 +164,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/20121128/GitSharedRepoAndRedmine/" title="Previous Post: Git 共有リポジトリ & Redmine 連携">&laquo; Git 共有リポジトリ & Redmine 連携</a>
       
-        <a class="basic-alignment right" href="/20121126/FoundationOfAmazonLinux/" title="Next Post: Amazon Linux ベース構築手順">Amazon Linux ベース構築手順 &raquo;</a>
       
     </p>
   </footer>
