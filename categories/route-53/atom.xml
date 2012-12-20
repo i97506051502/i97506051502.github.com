@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Route 53 | /life/log/messages]]></title>
+  <link href="http://i97506051502.github.com/categories/route-53/atom.xml" rel="self"/>
+  <link href="http://i97506051502.github.com/"/>
+  <updated>2012-12-20T19:24:33+09:00</updated>
+  <id>http://i97506051502.github.com/</id>
+  <author>
+    <name><![CDATA[Go Sato]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Amazon Route 53 でドメイン管理]]></title>
+    <link href="http://i97506051502.github.com/20121220/ManageDomainsByAmazonRoute53/"/>
+    <updated>2012-12-20T19:17:00+09:00</updated>
+    <id>http://i97506051502.github.com/20121220/ManageDomainsByAmazonRoute53</id>
+    <content type="html"><![CDATA[<p>既に保持しているドメインを Route 53 で管理したいと思います。</p>
+
+<p>まず、Route 53 Management Console にログインします。</p>
+
+<p>次に、Hosted Zone を作成します。</p>
+
+<ul>
+<li>NS と SOA レコードが自動的に作成されます。</li>
+<li>作成された NS レコードを、既に保持しているドメインの whois 情報のネームサーバー欄に登録します。</li>
+</ul>
+
+
+<p>ちなみに今回私の環境で作成された NS レコードは以下の 4 つでした。</p>
+
+<pre><code>ns-715.awsdns-25.net.
+ns-1344.awsdns-40.org.
+ns-1931.awsdns-49.co.uk.
+ns-118.awsdns-14.com.
+</code></pre>
+
+<p>A, MX, CNAME などのレコードを目的に応じて登録します。</p>
+
+<p>開発用 EC2 インスタンスは、使わないときは止めておきたいと思います。
+Elastic IP を使うと、EC2 インスタンに associate「していない」ときに課金されます。</p>
+
+<p>そこでやりたいことは「EC2 インスタンス起動後、自動的に割り当てられる Public IP アドレスにて、DNS レコードを更新」となります。</p>
+
+<p>EC2 インスタンスから、自身の Public IP アドレスを調べるときは以下のコマンドを EC2 インスタンスにて実行します。</p>
+
+<pre><code>curl -s http://169.254.169.254/latest/meta-data/public-ipv4
+</code></pre>
+
+<p>この結果得られる Public IP アドレスを使って Route 53 Management Console にて手動更新してもよいですが、毎回やるとなると面倒です。</p>
+
+<p>自動化のために以下のツールを使用します。</p>
+
+<p><a href="https://github.com/barnybug/cli53" title="barnybug/cli53 - GitHub">barnybug/cli53 - GitHub</a></p>
+
+<p>Amazon Linux にインストールしてみたいと思います。</p>
+
+<h3>前準備</h3>
+
+<h4>python と git のインストール</h4>
+
+<pre><code>sudo yum install python
+sudo yum install python-setuptools
+sudo yum install git
+</code></pre>
+
+<h4>dnspython のインストール</h4>
+
+<pre><code>sudo easy_install dnspython
+</code></pre>
+
+<h4>pip のインストール</h4>
+
+<pre><code>sudo easy_install pip
+</code></pre>
+
+<h4><a href="https://github.com/boto/boto" title="boto/boto - GitHub">boto/boto - GitHub</a> のインストール</h4>
+
+<pre><code>git clone http://github.com/boto/boto
+cd boto
+sudo python setup.py install&lt;/pre&gt;
+</code></pre>
+
+<h3>cli53 のインストール</h3>
+
+<pre><code>git clone https://github.com/barnybug/cli53
+sudo pip install cli53&lt;/pre&gt;
+</code></pre>
+
+<h3>Amazon Linux の環境変数設定</h3>
+
+<p>環境変数を整備します。AWS のアクセスキー・シークレットキーを ~/.*shrc に追加します。</p>
+
+<pre><code>export AWS_ACCESS_KEY_ID=YourAccessKey
+export AWS_SECRET_ACCESS_KEY=YourSecretKey
+</code></pre>
+
+<h3>A レコードの追加</h3>
+
+<p>A レコードを追加（更新）してみたいと思います。</p>
+
+<h4>i97506051502.com を追加（更新）</h4>
+
+<pre><code>curl -s http://169.254.169.254/latest/meta-data/public-ipv4 | xargs -i cli53 rrcreate i97506051502.com '' A {} --ttl 60 --replace
+</code></pre>
+
+<p>このコマンドが、起動後に実行されるようにしておきます。
+（/etc/rc.d/rc.local に追記するなどします。スクリプト内での環境変数の整備をお忘れなく）</p>
+
+<h4>Public DNS に登録されている自身の hostname を CNAME レコード（internal.）として登録</h4>
+
+<pre><code>curl -s http://169.254.169.254/latest/meta-data/public-hostname | xargs -i cli53 rrcreate i97506051502.com internal CNAME {} --ttl 60 --replace
+</code></pre>
+
+<p>Public DNS に登録されている hostname は、EC2 インスタンスにて名前解決すると Class A のプライベート IP アドレスが返ってきます。
+EC2 インスタンス同士では上記 hostname のみで、ネットワークをまたぐことなく、名前解決が可能になります。</p>
+
+<p>cli53 は他にも色々と Route 53 への操作が可能のようです。追々調べてみたいと思います。</p>
+]]></content>
+  </entry>
+  
+</feed>
