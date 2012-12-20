@@ -4,7 +4,7 @@
   <title><![CDATA[/life/log/messages]]></title>
   <link href="http://i97506051502.github.com/atom.xml" rel="self"/>
   <link href="http://i97506051502.github.com/"/>
-  <updated>2012-12-20T18:30:41+09:00</updated>
+  <updated>2012-12-20T18:44:46+09:00</updated>
   <id>http://i97506051502.github.com/</id>
   <author>
     <name><![CDATA[Go Sato]]></name>
@@ -21,9 +21,12 @@
     <content type="html"><![CDATA[<p>いい感じのブログを作りたいな、と思って色々ツールをあさる中、Octopress に出会いました。
 Octopress は私の理解では、Markdown で記事のソースを書いて ruby で HTML を generate して git でサーバーにアップロードするツールです。</p>
 
-<p>試してみるといい感じなので以下の理由で導入を決めました。
-- Markdown で記事が書ける(構造化された HTML がサクっと作れるので Markdown 大好きです)。
-- シンタックスハイライトがデフォルトできれい。</p>
+<p>試してみるといい感じなので以下の理由で導入を決めました。</p>
+
+<ul>
+<li>Markdown で記事が書ける(構造化された HTML がサクっと作れるので Markdown 大好きです)。</li>
+</ul>
+
 
 <h2>環境</h2>
 
